@@ -1,0 +1,339 @@
+#:kivy 1.11.1
+
+#: import NoTransition kivy.uix.screenmanager.NoTransition
+#: import Image kivy.uix.image.Image
+#=============================================
+
+WindowManager:
+    transition: NoTransition()
+
+    MenuScreen:
+        id: MenuScreen
+    ConnectScreen:
+        id: ConnectScreen
+    ConnectPairScreen:
+        id: ConnectPairScreen
+    ConnectIDScreen:
+        id: ConnectIDScreen
+    ConnectOfflineScreen:
+        id: ConnectOfflineScreen
+    LoggerScreen:
+        id: LoggerScreen
+    AboutScreen:
+        id: AboutScreen
+    SettingsScreen:
+        id: SettingsScreen
+    
+#=============================================
+
+<MenuScreen>:
+    name: "MenuScreen"
+    
+    Image:
+        source: app.assets.MAIN_SCREEN
+        size_hint: 1,1
+        keep_ratio: False
+        allow_stretch: False
+    
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: 0.65, 0.65
+        pos_hint: {'center_x': 0.6, 'center_y': 0.35}
+        padding: 100
+        spacing: 40
+
+        ImageButton:
+            id: connect_btn
+            source: app.assets.CONNECT
+            size_hint: 0.5, 0.1
+            keep_ratio: False
+            allow_stretch: False
+
+            on_release: 
+                app.root.current = app.choose_connect_screen()
+
+        ImageButton:
+            id: logger_btn
+            source: app.assets.LOGGER
+            size_hint: 0.5, 0.1
+            keep_ratio: False
+            allow_stretch: False
+
+            on_release: 
+                app.root.current = "LoggerScreen"
+
+        ImageButton:
+            id: about_btn
+            source: app.assets.SETTINGS
+            size_hint: 0.5, 0.1
+            keep_ratio: False
+            allow_stretch: False
+
+            on_release: 
+                app.root.current = "SettingsScreen"
+
+        ImageButton:
+            id: about_btn
+            source: app.assets.ABOUT
+            size_hint: 0.5, 0.1
+            keep_ratio: False
+            allow_stretch: False
+
+            on_release: 
+                app.root.current = "AboutScreen"
+
+
+<ConnectPairScreen>:
+    name: "ConnectPairScreen"
+    id: ConnectPairScreen
+    Image:
+        source: app.assets.CONNECT_SCREEN
+        size_hint: 1,1
+        keep_ratio: False
+        allow_stretch: False
+
+    FloatLayout:
+        Image:
+            source: app.assets.PAIR_IMG
+            size_hint: 1,1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.25}
+            keep_ratio: False
+            allow_stretch: False
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.5, 'center_y': 0.58}
+
+            ImageButton:
+                id: pair_btn
+                source: app.assets.PAIR_BTN
+                size_hint: 0.6, 0.6
+                keep_ratio: False
+                allow_stretch: False
+                on_release: 
+                    app.update_id()
+                    app.root.current = "ConnectIDScreen"
+
+
+        BackButton:
+
+
+<ConnectIDScreen>:
+    name: "ConnectIDScreen"
+    Image:
+        source: app.assets.CONNECT_SCREEN
+        size_hint: 1,1
+        keep_ratio: False
+        allow_stretch: False
+
+    FloatLayout:
+        Image:
+            source: app.assets.ID_FRAME
+            size_hint: 0.4, 0.4
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            keep_ratio: False
+            allow_stretch: False
+
+
+        IDTextWidget:
+            id: id_widg
+            size_hint: 0.7, 0.7
+            pos_hint: {'center_x': 0.7, 'center_y': 0.25}
+
+
+        BackButton:
+
+<ConnectOfflineScreen>:
+    name: "ConnectOfflineScreen"
+    Image:
+        source: app.assets.CONNECT_SCREEN
+        size_hint: 1,1
+        keep_ratio: False
+        allow_stretch: False
+
+    FloatLayout:
+        Image:
+            source: app.assets.OFFLINE_TITLE
+            size_hint: 1,1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+            keep_ratio: True
+            allow_stretch: False
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 0.1, 0.1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            ImageButton:
+                id: discon_btn
+                source: app.assets.REFRESH_BTN
+                size_hint: 0.6, 0.6
+                keep_ratio: False
+                allow_stretch: False
+                on_release:
+                    app.refresh_connection()
+
+    
+        BackButton:
+
+<ConnectScreen>:
+    name: "ConnectScreen"
+    Image:
+        source: app.assets.CONNECT_SCREEN
+        size_hint: 1,1
+        keep_ratio: False
+        allow_stretch: False
+
+    FloatLayout:
+        Image:
+            source: app.assets.CONNECTED_TITLE
+            size_hint: 1,1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+            keep_ratio: False
+            allow_stretch: False
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 0.1, 0.1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            ImageButton:
+                id: discon_btn
+                source: app.assets.DISCONNECT_BTN
+                size_hint: 0.6, 0.6
+                keep_ratio: False
+                allow_stretch: False
+                on_release:
+                    app.disconnect()
+
+
+        BackButton:
+
+
+<LoggerScreen>:
+    name: "LoggerScreen"
+    Image:
+        source: app.assets.LOGGER_SCREEN
+        size_hint: 1,1
+        keep_ratio: False
+        allow_stretch: False
+
+    LogView:
+        id: log_view
+
+    FloatLayout:
+        BackButton:      
+
+<SettingsScreen>:
+    name: "SettingsScreen"
+    Image:
+        source: app.assets.SETTINGS_SCREEN
+        size_hint: 1,1
+        keep_ratio: False
+        allow_stretch: False
+
+    FloatLayout:
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 0.1, 0.1
+            pos_hint: {'center_x': 0.07, 'center_y': 0.75}
+
+            ImageButton:
+                id: clean_log
+                source: app.assets.EXPORT_LOG
+                keep_ratio: False
+                allow_stretch: False
+                size_hint: 0.8, 0.8
+                on_release:
+                    app.export_log()
+                
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 0.1, 0.1
+            pos_hint: {'center_x': 0.23, 'center_y': 0.75}
+
+            ImageButton:
+                id: clean_log
+                source: app.assets.CLEAN_LOG
+                keep_ratio: False
+                allow_stretch: False
+                size_hint: 0.8, 0.8
+                on_release:
+                    app.clean_log()
+
+    FloatLayout:
+        Image:
+            source: app.assets.MAGIC_PATH_TXT
+            keep_ratio: False
+            allow_stretch: False
+            size_hint: 0.151, 0.151
+            pos_hint: {'center_x': 0.1, 'center_y': 0.6}
+
+        Image:
+            source: app.assets.MAGIC_PATH_INPUT
+            keep_ratio: True
+            allow_stretch: True
+            size_hint: 0.3, 0.06
+            pos_hint: {'center_x': 0.35, 'center_y': 0.6}
+
+        MagicPathInput:
+            id: magic_file_input
+            size_hint: 0.5, 0.05
+            pos_hint: {'center_x': 0.46, 'center_y': 0.6}
+            on_text_validate:
+                app.transfer_magic()
+
+    BackButton:
+
+<AboutScreen>:
+    name: "AboutScreen"
+    Image:
+        source: app.assets.ABOUT_SCREEN
+        size_hint: 1,1
+        keep_ratio: True
+        allow_stretch: True
+
+    FloatLayout:
+        Label:
+            id: info_text 
+            pos_hint: {'center_x': 0.53, 'center_y': 0.6}
+            markup: True
+            text: 
+                'Developed by: Ofek Harel ( AKA Horizon ).\nYear: 2020 + 2021.\n\n' +\
+                'This software is part of the Orion Connection tools that allows\n' +\
+                'to use the computer as if it was an I.O.T device.\n' +\
+                'For further info go to my [color=#0066CC][ref="link"]GitHub[/ref][/color]\n\n' +\
+                'This Project created using Python and KIVY.'
+            font_size: 32
+            text_size: self.size
+            halign: 'left'
+            valign: 'middle'
+            on_ref_press:
+                app.open_link()
+
+            
+        BackButton:
+
+<BackButton>:
+    text: "Back"
+    font_name: app.assets.DEF_FONT
+    size_hint: None, None
+    pos_hint: {"right": 0.92, "bottom": 0.9}
+    font_size: 46
+
+    on_release:
+        app.root.current = "MenuScreen"
+
+<TransTextInput>:
+    multiline: False
+    foreground_color: (1,0,1,1)
+    background_color: (0,0,0,0)
+    cursor_color: (1, 1, 1, 0.971)
+    cursor_width: 1
+    coulor: (1, 1, 1, 1)
+
+    canvas.before:
+        Color:
+            rgba: self.coulor

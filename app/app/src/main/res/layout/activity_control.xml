@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawer"
+    tools:context=".Control"
+    android:background="@drawable/grad_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/control_toolbar" />
+
+        <TextView
+            android:id="@+id/control_title"
+            android:paddingVertical="22dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Control"
+            android:textColor="@color/app_white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="35dp"
+            android:background="@color/app_white"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="20dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginVertical="50dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="1.7"
+                android:scaleY="1.7"
+                android:src="@drawable/ic_previous"
+                android:layout_gravity="start"
+                android:onClick="clickPrev"
+                android:background="@drawable/ripple" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="clickPausePlayToggle"
+                android:scaleX="1.7"
+                android:scaleY="1.7"
+                android:src="@drawable/ic_pause"
+                android:background="@drawable/ripple"
+                android:layout_marginHorizontal="70dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="1.7"
+                android:scaleY="1.7"
+                android:src="@drawable/ic_next"
+                android:layout_gravity="end"
+                android:onClick="clickNext"
+                android:background="@drawable/ripple" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="20dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:src="@drawable/ic_volume_down"
+                android:layout_gravity="start"
+                android:onClick="clickVolDown"
+                android:background="@drawable/ripple"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="clickMute"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:src="@drawable/ic_volume_off"
+                android:background="@drawable/ripple"
+                android:layout_marginHorizontal="70dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:onClick="clickVolUp"
+                tools:translationX="-2dp"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:src="@drawable/ic_volume_up"
+                android:background="@drawable/ripple"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleX="1"
+            android:scaleY="1"
+            android:src="@drawable/other_pow_btn"
+            android:onClick="clickPowerOpt"
+            android:layout_marginVertical="80dp"/>
+
+        <ImageView
+            android:id="@+id/magic_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleX="1.4"
+            android:scaleY="1.4"
+            android:src="@drawable/ic_magic"
+            android:onClick="clickMagic"
+            android:visibility="invisible"
+            android:background="@drawable/ripple_magic"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/white">
+
+        <include
+            layout="@layout/main_nav_drawer"/>
+    </RelativeLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>
