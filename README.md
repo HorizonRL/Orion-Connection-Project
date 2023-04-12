@@ -1,5 +1,5 @@
-# Orion-Conneection-App
+# Orion-Conneection-Project
 
-An android app to connect with the Orion Coonection Devices.
+Three side project that enables the ability to control your PC as an IoT device
 
-demo: https://www.youtube.com/watch?v=Munfqw2zD0A
+## [Full Demo](https://www.youtube.com/watch?v=Munfqw2zD0A)
